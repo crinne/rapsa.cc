@@ -1,23 +1,23 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 // dirty just for example
 const ResizableItem = () => {
 
-    const [width, setWidth] = useState();
-    const [height, setHeight] = useState();
+    // const [width, setWidth] = useState();
+    // const [height, setHeight] = useState();
 
 
     const itemRef = useRef<HTMLDivElement>(null);
 
     // The current position of mouse
     let x = 0;
-    let y = 0;
+    // let y = 0;
 
     // The dimension of the element
     let w = 0;
-    let h = 0;
-    let resizingLeft = false;
-    let resizingCentral = false;
+    // let h = 0;
+    // let resizingLeft = false;
+    // let resizingCentral = false;
 
 
 
@@ -34,7 +34,7 @@ const ResizableItem = () => {
         itemRef.current!.style.width = `${w + dx}px`;
     }
 
-    const handleRightMouseDown = (e: React.MouseEventHandler<HTMLDivElement>) => {
+    const handleRightMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         console.log('handleRightMouseDown');
         e.stopPropagation();
  
@@ -42,7 +42,7 @@ const ResizableItem = () => {
 
         const styles = window.getComputedStyle(itemRef.current!);
         w = parseInt(styles.width, 10);
-        h = parseInt(styles.height, 10);
+        // h = parseInt(styles.height, 10);
 
         x = e.clientX
                 
@@ -58,13 +58,13 @@ const ResizableItem = () => {
         document.addEventListener('mouseup', handleRightMouseUp);
     }
 
-    const handleLeftMouseDown = (e: MouseEvent) => {
+    const handleLeftMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         console.log('handleLeftMouseDown');
         e.stopPropagation();
 
         const styles = window.getComputedStyle(itemRef.current!);
         w = parseInt(styles.width, 10);
-        h = parseInt(styles.height, 10);
+        // h = parseInt(styles.height, 10);
         x = e.clientX;
 
         itemRef.current!.style.right = styles.right;
@@ -96,34 +96,34 @@ const ResizableItem = () => {
     }
 
 
-    const handleCentreMouseDown = (e: React.MouseEvent) => {
-        resizingCentral = true;
-        console.log('handleCentreMouseDown');
-        const styles = window.getComputedStyle(itemRef.current!);
-        x = e.clientX - parseInt(styles.left);
-        w = parseInt(styles.width, 10);
-        console.log("left > ", parseInt(styles.left));
+    // const handleCentreMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    //     // resizingCentral = true;
+    //     console.log('handleCentreMouseDown');
+    //     const styles = window.getComputedStyle(itemRef.current!);
+    //     x = e.clientX - parseInt(styles.left);
+    //     w = parseInt(styles.width, 10);
+    //     console.log("left > ", parseInt(styles.left));
 
 
-        itemRef.current!.style.right = "";
-        // itemRef!.style.right = parseInt(styles.right'"'")
+    //     itemRef.current!.style.right = "";
+    //     // itemRef!.style.right = parseInt(styles.right'"'")
 
-        itemRef.current!.style.left = `${parseInt(styles.left)}`
-        // itemRef!.style.left = `${parseInt(styles.left)}px`;
+    //     itemRef.current!.style.left = `${parseInt(styles.left)}`
+    //     // itemRef!.style.left = `${parseInt(styles.left)}px`;
 
-        document.addEventListener('mousemove', handleCentreMouseMove);
-        document.addEventListener('mouseup', handleCentreMouseUp);
+    //     document.addEventListener('mousemove', handleCentreMouseMove);
+    //     document.addEventListener('mouseup', handleCentreMouseUp);
 
-    }
+    // }
 
-    const handleCentreMouseMove = (e: MouseEvent) => {
-        itemRef.current!.style.left = `${e.clientX - x}px`;
-    }
+    // const handleCentreMouseMove = (e: MouseEvent) => {
+    //     itemRef.current!.style.left = `${e.clientX - x}px`;
+    // }
 
-    const handleCentreMouseUp = () => {
-        document.removeEventListener('mousemove', handleCentreMouseMove);
-        document.removeEventListener('mouseup', handleCentreMouseUp);
-    }
+    // const handleCentreMouseUp = () => {
+    //     document.removeEventListener('mousemove', handleCentreMouseMove);
+    //     document.removeEventListener('mouseup', handleCentreMouseUp);
+    // }
 
     return (
 
@@ -137,7 +137,7 @@ const ResizableItem = () => {
             w-[200px]"
                
         >
-            <div class="
+            <div className="
                 cursor-col-resize
                 absolute 
                 border 
@@ -151,7 +151,7 @@ const ResizableItem = () => {
                 "
                 onMouseDown={handleRightMouseDown}
             >r</div>
-            <div class="
+            <div className="
                 cursor-col-resize
                 absolute 
                 border 
