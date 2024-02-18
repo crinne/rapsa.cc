@@ -8,7 +8,7 @@ export const ResizableDiv = () => {
 
   return (
     <div>
-      <h2>Rezisable DIV</h2>
+      <h2>draft</h2>
     </div>
   )
 }
