@@ -1,12 +1,11 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Choose the style you prefer
-import HighLevelOverview from '../../assets/resizable-div.png'
-import { ResizableItem } from '../../components/Resizable';
 
 const theme = vscDarkPlus
 
+const envFileString = `export PORT=3000`
 
-const makefileString = `# include .env
+const makefileString = `include .envrc
 PROJECTNAME=$(shell basename "$(PWD)")
 
 # Go related variables.
@@ -19,7 +18,6 @@ STDERR=/tmp/.$(PROJECTNAME)-stderr.txt
 
 # PID file will keep the process id of the server
 PID=/tmp/.$(PROJECTNAME).pid
-
 
 all: watch
 
@@ -34,9 +32,9 @@ build:
 	@go build -o $(GOBIN)/$(PROJECTNAME) $(ENTRY)
 
 start:
-	@echo " > $(PROJECTNAME) is available at http://localhost:$(PORT)"
+	@echo "  >  $(PROJECTNAME) is available at http://localhost:$(PORT)"
 	@$(GOBIN)/$(PROJECTNAME) 2>&1 & echo $$! > $(PID)
-	@cat $(PID) | sed "/^/s/^/  /\\>  PID: /"
+	@cat $(PID) | sed "/^/s/^/ \\>  PID: /"
 
 stop:
 	@echo "  >  Stopping the server.."
@@ -63,11 +61,26 @@ export const MakeFileForGO = () => {
 
       <div className="p-5 w-full max-w-[824px]">
         <h1 className="text-4xl font-bold">Makefile for GO</h1>
-        <p className="mt-6 text-sm font-light">
-          <b className="font-semibold" >Makefile for GO</b> </p>
       </div>
 
-      <div className="mt-10  px-5 w-full max-w-[824px]">
+      <div className="mt-10 px-5 w-full max-w-[824px]">
+        <h1 className="text-2xl font-bold">Prerequisite</h1>
+        <ul className='px-6'>
+          <li className='text-sm list-disc'>make</li>
+          <li className='text-sm list-disc'>fswatch installed https://emcrisostomo.github.io/fswatch/</li>
+          <li className='text-sm list-disc'>migrate installed https://github.com/golang-migrate/migrate</li>
+          <li className='text-sm list-disc'>direnv installed https://direnv.net/</li>
+        </ul>
+      </div>
+      <div className="mt-10 px-5 w-full max-w-[824px]">
+        <h1 className="text-2xl font-bold">.envrc</h1>
+      </div>
+      <div className="px-5 w-full max-w-[824px] mb-20 ">
+        <SyntaxHighlighter className="w-full rounded-xl" language="shell" style={theme}>
+          {envFileString}
+        </SyntaxHighlighter>
+      </div>
+      <div className="px-5 w-full max-w-[824px]">
         <h1 className="text-2xl font-bold">Makefile</h1>
       </div>
       <div className="px-5 w-full max-w-[824px] mb-20 ">
