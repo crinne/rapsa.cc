@@ -19,11 +19,11 @@ function App() {
           <li className="mt-20">
             <h3 className="dark:text-neutral-300 font-semibold cursor-pointer"
               onClick={() => navigate("/resizable-div")}
-            >Auto reload GO ith Makefile</h3>
+            >Auto reload GO app with Makefile</h3>
             <span className="text-xs dark:text-neutral-500 font-thin">2024-02-21</span>
             <div className="mt-4">
               <p className="text-sm font-light dark:text-neutral-400">
-                I really loved the dev experience we have with nodeJs. I wanted something similar for GO.
+                I really loved the dev experience we have with nodeJS. I wanted something similar for GO.
               </p>
             </div>
             <Link className="cursor-pointer mt-2 flex dark:text-neutral-400 dark:hover:text-neutral-300" 
