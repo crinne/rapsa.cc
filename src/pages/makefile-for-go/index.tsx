@@ -69,7 +69,7 @@ export const MakeFileForGO = () => {
           <li className='text-sm list-disc'>make</li>
           <li className='text-sm list-disc'>fswatch installed https://emcrisostomo.github.io/fswatch/</li>
           <li className='text-sm list-disc'>migrate installed https://github.com/golang-migrate/migrate</li>
-          <li className='text-sm list-disc'>direnv installed https://direnv.net/</li>
+          <li className='text-sm list-disc'>direnv installed https://github.com/direnv/direnv</li>
         </ul>
       </div>
       <div className="mt-10 px-5 w-full max-w-[824px]">
