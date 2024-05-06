@@ -181,7 +181,10 @@ export const PoorManCICD = () => {
 
   return (
     <div className="text-neutral-300 flex flex-col items-center bg-gray-950">
-      <h1>Poor Man's CI/CD</h1>
+
+      <div className="p-5 w-full max-w-[824px]">
+        <h1 className="text-4xl font-bold">Poor Man's CI/CD</h1>
+      </div>
 
       <div className="p-5 mt-20 w-full max-w-[824px]">
         <p className="text-sm font-light">
@@ -190,7 +193,7 @@ export const PoorManCICD = () => {
         </p>
 
         <p className="mt-10 text-sm font-light">
-          Im going to show how one can deply in this case GO on VPS using GitHub actions. 
+          Im going to show how one can deply in this case GO on VPS using GitHub actions.
         </p>
       </div>
 
@@ -211,7 +214,7 @@ export const PoorManCICD = () => {
 
       <div className="p-5 mt-5 w-full max-w-[824px]">
         <p className="text-sm font-light">
-            In here I assume you have access to your server (VPS)
+          In here I assume you have access to your server (VPS)
         </p>
       </div>
 
